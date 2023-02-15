@@ -4,7 +4,7 @@ services:
     restart: always
     command: '--default-authentication-plugin=mysql_native_password'
     volumes:
-      - db:/var/lib/mysql
+      - db_data:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=rootpass
       - MYSQL_PASSWORD=nextpass
@@ -32,4 +32,4 @@ services:
       
 volumes:
   nextcloud:
-  db:
+  db_data:
