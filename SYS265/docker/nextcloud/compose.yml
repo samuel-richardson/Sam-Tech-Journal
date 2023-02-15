@@ -1,33 +1,45 @@
 services:
-  db:
-    image: mariadb:10.6.4-focal
+  nc:
+    image: nextcloud:apache
     restart: always
-    command: '--default-authentication-plugin=mysql_native_password'
-    volumes:
-      - db_data:/var/lib/mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=rootpass
-      - MYSQL_PASSWORD=nextpass
-      - MYSQL_DATABASE=nextcloud
-      - MYSQL_USER=nextcloud
-    expose:
-      - 3306
-      - 33060
-
-  app:
-    image: nextcloud
-    restart: always
-    container_name: nextcloud
     ports:
       - 80:80
     volumes:
-      - nextcloud:/var/www/html
+      - nc_data:/var/www/html
+    networks:
+      - redisnet
+      - dbnet
     environment:
-      - MYSQL_PASSWORD=nextpass
+      - REDIS_HOST=redis
+      - MYSQL_HOST=db
       - MYSQL_DATABASE=nextcloud
       - MYSQL_USER=nextcloud
-      - MYSQL_HOST=db
-      
+      - MYSQL_PASSWORD=nextcloud
+  redis:
+    image: redis:alpine
+    restart: always
+    networks:
+      - redisnet
+    expose:
+      - 6379
+  db:
+    image: mariadb:10.5
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    restart: always
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - dbnet
+    environment:
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_ROOT_PASSWORD=nextcloud
+      - MYSQL_PASSWORD=nextcloud
+    expose:
+      - 3306
 volumes:
-  nextcloud:
   db_data:
+  nc_data:
+networks:
+  dbnet:
+  redisnet:
