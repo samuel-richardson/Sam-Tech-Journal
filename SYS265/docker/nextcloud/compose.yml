@@ -28,6 +28,6 @@ services:
       - MYSQL_USER=nextcloud
       - MYSQL_HOST=db
       
-  volumes:
-    nextcloud:
-    db:
+volumes:
+  nextcloud:
+  db:
