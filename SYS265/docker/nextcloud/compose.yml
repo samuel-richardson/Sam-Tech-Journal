@@ -15,6 +15,7 @@ services:
   app:
     image: nextcloud
     restart: always
+    container_name: nextcloud
     ports:
       - 8080:80
     links:
