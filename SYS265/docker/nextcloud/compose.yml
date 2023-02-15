@@ -20,8 +20,6 @@ services:
     container_name: nextcloud
     ports:
       - 80:80
-    links:
-      - db
     volumes:
       - nextcloud:/var/www/html
     environment:
