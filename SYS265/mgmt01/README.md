@@ -1,1 +1,1 @@
-hostname
+MGMT01-samuel
