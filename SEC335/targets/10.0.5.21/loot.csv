@@ -1,1 +1,12 @@
-
+user,password,service
+samwise,RosieRosie,http
+pippin,adminPippin,http
+bilbo,Rivendell107,http
+frodo,1Brandywine,http
+samwise.gamgee,Mallorn79,ssh
+peregrin.took,28Peregrin,ssh
+bilbo.baggins,Frodo2013,ssh
+frodo.baggins,Strider2020,ssh
+gandalf.grey,gandalfrockyou,ssh
+galadriel,galadrielarwen111,ssh
+boromir,BoRomir2000Z,ssh
