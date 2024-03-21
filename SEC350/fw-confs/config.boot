@@ -147,17 +147,14 @@ interfaces {
     ethernet eth0 {
         address 10.0.17.132/24
         description SEC350-WAN
-        hw-id 00:50:56:a1:c9:cb
     }
     ethernet eth1 {
         address 172.16.50.2/29
         description SAM-DMZ
-        hw-id 00:50:56:a1:6c:6b
     }
     ethernet eth2 {
         address 172.16.150.2/24
         description SAM-LAN
-        hw-id 00:50:56:a1:15:f9
     }
     loopback lo {
     }
